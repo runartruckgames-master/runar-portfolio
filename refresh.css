@@ -1,0 +1,11 @@
+/* Portfolio visual refresh */
+:root{--bg:#29283e;--panel:#3b3954;--ink:#faf9ff;--muted:#d3d0e2;--accent:#c4a6ff;--line:#5c5875}
+body{background:radial-gradient(ellipse at 70% 0%,#5d4b7c 0%,transparent 39%),var(--bg)}
+header{background:#29283ff2}
+.hero-art{background:radial-gradient(circle at 50% 45%,#b798f788,transparent 43%),linear-gradient(135deg,#695589,#39384f);border-color:#a28bc1}
+.services article,.project{background:linear-gradient(145deg,#48445f,#34334d);box-shadow:0 8px 24px #18152b24}
+.filters button{background:#45415c}
+nav{background:#34334d}
+.project{transition:transform .2s ease,box-shadow .2s ease}
+.project:hover{transform:translateY(-4px);box-shadow:0 16px 35px #17152655}
+@media(max-width:800px){nav{background:#34334d}}
