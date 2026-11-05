@@ -24,3 +24,5 @@ nav{background:#34334d}
 .example-list{display:grid;gap:8px;margin:0 0 16px}.example-list a{padding:10px 12px;border:1px solid #77718e;border-radius:9px;background:#504b68;font-size:13px;color:#f1e9ff;text-decoration:none}.example-list a:hover{background:#665b82}
 
 .document-viewer{width:min(1050px,96vw);height:min(850px,94vh);max-width:96vw;max-height:94vh;padding:54px 12px 12px;border:1px solid #8d83a6;border-radius:16px;background:#2d2b43;box-shadow:0 24px 80px #090812aa}.document-viewer::backdrop{background:#0b0919d9}.document-viewer iframe{width:100%;height:100%;border:0;background:#fff;border-radius:8px}
+
+.video-preview{display:block;width:100%;margin:0 0 16px;padding:15px;text-align:left;background:#504568;color:#f9f4ff;border:1px solid #8e7ab2;border-radius:12px;font:600 14px/1.5 system-ui;cursor:pointer}.video-preview:hover{background:#685685}
