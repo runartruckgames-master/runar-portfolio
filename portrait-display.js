@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{const img=document.getElementById("profile-preview"),hint=document.getElementById("profile-hint");if(!img)return;try{const saved=localStorage.getItem("runar-portfolio-photo-v2");if(saved){img.src=saved;img.hidden=false;if(hint)hint.hidden=true}}catch(e){}});
