@@ -1,0 +1,44 @@
+name: Portfolio validation
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JavaScript and inline editor scripts
+        run: |
+          node --check examples.js
+          node --check portrait-display.js
+          node --check published-content.js
+          node --check photo-editor.js
+          node - <<'NODE'
+          const fs=require('node:fs'),vm=require('node:vm');
+          for(const file of ['studio.html','index.html','preview.html']){
+            const html=fs.readFileSync(file,'utf8');
+            for(const [i,match] of [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].entries()){
+              if(match[1].trim())new vm.Script(match[1],{filename:file+'#script-'+i});
+            }
+          }
+          NODE
+      - name: Validate published content
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const site=JSON.parse(fs.readFileSync('site-content.json','utf8'));
+          const video=JSON.parse(fs.readFileSync('video-sources.json','utf8'));
+          if(site.version!==1||video.version!==1)throw Error('Unsupported configuration version');
+          for(const field of ['lead','about','contact'])if(typeof site[field]!=='string')throw Error('Invalid '+field);
+          if(!site.projects||typeof site.projects!=='object'||Array.isArray(site.projects))throw Error('Invalid projects');
+          if(typeof site.profilePhoto!=='string'||(site.profilePhoto&&!/^assets\/[a-zA-Z0-9_.-]+\.(jpg|jpeg|png|webp)$/.test(site.profilePhoto)))throw Error('Invalid profile photo path');
+          if(!video.sources||typeof video.sources!=='object'||Array.isArray(video.sources))throw Error('Invalid video sources');
+          for(const [key,path] of Object.entries(video.sources)){
+            if(!['tiny-workers','birthday','magic-world'].includes(key)||typeof path!=='string'||!/^assets\/videos\/[a-z0-9_-]+\.(mp4|webm)$/.test(path))throw Error('Invalid video source: '+key);
+            if(!fs.existsSync(path))throw Error('Video file missing: '+path);
+          }
+          NODE
