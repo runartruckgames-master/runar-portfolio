@@ -97,3 +97,6 @@ nav{background:#f8f5f0}
 .photo-editor-dialog canvas{display:block;width:100%;height:auto;aspect-ratio:28/23;touch-action:none;cursor:grab;border:1px solid #d5c9d8;border-radius:12px}
 .photo-editor-dialog label{display:flex;gap:12px;align-items:center;margin:14px 0}.photo-editor-dialog input{flex:1;accent-color:#7864a4}
 .photo-editor-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.photo-editor-actions button{padding:10px 14px;border:1px solid #cfc3d9;border-radius:9px;background:#eee8f1;color:#493b60;cursor:pointer}.photo-editor-actions button[data-action="save"]{background:#7864a4;color:#fff}
+
+.photo-edit-button{display:block;padding:9px 14px;border:1px solid #cfc1dc;border-radius:10px;background:#7864a4;color:#fff;font-weight:650;font-size:13px;cursor:pointer}.photo-edit-button:hover{background:#68538f}
+.photo-editor-actions button[data-action="save"]{font-weight:800;font-size:16px;padding:12px 24px;box-shadow:0 3px 10px #55427835}
