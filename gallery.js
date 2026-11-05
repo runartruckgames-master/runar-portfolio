@@ -1,0 +1,12 @@
+// Gallery of verified portfolio files from Google Drive.
+const portfolioImages = [
+  [{id:"1XT-PYO5YChmhVUc8cmYCYL-9x_7_uVuJ",name:"Салон красоты - рекламный баннер"},{id:"1YgHKgLJzRZMvrI8Q9avM7V22qWIZVbVB",name:"Салон красоты - второй вариант"}],
+  [{id:"1vzUlx7APp7x4MqFVczwNV6eMe6itfoa2",name:"Пекарня - круассаны"},{id:"1Ii33i_6FD4AYsipD1TvEeY973ozc46d3",name:"Пекарня - доставка завтрака"}],
+  [{id:"1w12qVgaNGWjScZKcJWHIAg8wIqBNjPzo",name:"Барбершоп - мужской стиль"},{id:"1fumwRpB3tzOlUi0alkA3R1ZCPICziwhL",name:"Барбершоп - твой уровень"}],
+  [{id:"1HWZyyLjMtgv23RXUdGa76OI29qjeXTIH",name:"Онлайн-курс сторис - проблема"},{id:"1-JAeU-ZzyO8xO8aiSfhKSUdPCQLYrmpl",name:"Онлайн-курс сторис - решение"},{id:"1l-QusgiGLJ3z5kl1EXEdbXYty0W64qRR",name:"Онлайн-курс сторис - запись"}]
+];
+const thumb=id=>"https://drive.google.com/thumbnail?id="+encodeURIComponent(id)+"&sz=w1200";
+const viewer=document.createElement("dialog");viewer.className="image-viewer";viewer.innerHTML='<button type="button" class="viewer-close" aria-label="Закрыть">×</button><img alt=""><p></p>';
+document.body.append(viewer);viewer.querySelector(".viewer-close").addEventListener("click",()=>viewer.close());viewer.addEventListener("click",e=>{if(e.target===viewer)viewer.close()});
+function mountGallery(){document.querySelectorAll("#projects .project").forEach(card=>{const title=card.querySelector("h3")?.textContent;const index=data.findIndex(p=>p[1]===title);const images=portfolioImages[index];if(!images?.length||card.querySelector(".project-images"))return;const holder=document.createElement("div");holder.className="project-images";images.forEach((item,n)=>{const button=document.createElement("button");button.type="button";button.className="image-button";button.setAttribute("aria-label","Увеличить: "+item.name);const img=document.createElement("img");img.src=thumb(item.id);img.alt=item.name;img.loading="lazy";img.referrerPolicy="no-referrer";img.addEventListener("error",()=>{button.hidden=true});button.append(img);button.addEventListener("click",()=>{viewer.querySelector("img").src=thumb(item.id);viewer.querySelector("img").alt=item.name;viewer.querySelector("p").textContent=item.name;viewer.showModal()});holder.append(button)});card.insertBefore(holder,card.querySelector(".tag"))})}
+mountGallery();document.querySelectorAll("[data-filter]").forEach(button=>button.addEventListener("click",mountGallery));
