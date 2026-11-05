@@ -105,3 +105,7 @@ nav{background:#f8f5f0}
 .photo-edit-button[hidden]{display:none!important}
 .photo-edit-button{background:transparent;color:#7864a4;border-color:#cfc1dc;padding:6px 12px;font-size:12px}
 .photo-edit-button:hover{background:#eee8f1;color:#594879}
+
+/* Clean portrait border: no dotted upload outline after photo selection */
+.photo-upload:has(img:not([hidden])){border:0!important;border-radius:20px;box-shadow:0 10px 30px #45334b20;background:transparent}
+.photo-upload:has(img:not([hidden])) img{border-radius:20px}
