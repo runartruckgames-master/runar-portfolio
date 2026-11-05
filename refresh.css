@@ -100,3 +100,8 @@ nav{background:#f8f5f0}
 
 .photo-edit-button{display:block;padding:9px 14px;border:1px solid #cfc1dc;border-radius:10px;background:#7864a4;color:#fff;font-weight:650;font-size:13px;cursor:pointer}.photo-edit-button:hover{background:#68538f}
 .photo-editor-actions button[data-action="save"]{font-weight:800;font-size:16px;padding:12px 24px;box-shadow:0 3px 10px #55427835}
+
+/* Hide edit action when no portrait has been saved */
+.photo-edit-button[hidden]{display:none!important}
+.photo-edit-button{background:transparent;color:#7864a4;border-color:#cfc1dc;padding:6px 12px;font-size:12px}
+.photo-edit-button:hover{background:#eee8f1;color:#594879}
