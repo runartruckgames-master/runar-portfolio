@@ -44,3 +44,16 @@ nav{background:#fff}.brand span,.eyebrow,.hero em,.services b,.project .tag{colo
 .image-button{background:#f1edf8;border-color:#ddd7e9}
 .menu{color:#343348}
 @media(max-width:800px){nav{background:#fff}}
+
+/* Warm soft-neutral palette: reduced white glare */
+:root{--bg:#eeeae5;--panel:#f8f5f0;--ink:#302e35;--muted:#68636d;--accent:#7864a4;--line:#ded8d3}
+body{background:radial-gradient(ellipse at 85% 0%,#e9e0ed 0%,transparent 38%),#eeeae5;color:var(--ink)}
+header{background:#f5f1edee;border-bottom-color:#ded8d3}
+nav{background:#f8f5f0}
+.services article,.project{background:#f8f5f0;border-color:#e0dad6}
+.filters button{background:#f8f5f0;color:#45404b;border-color:#ded8d3}.filters button.active{background:#7864a4;color:#fff}
+.btn{background:#7864a4;border-color:#7864a4}.btn.alt{background:#f8f5f0}
+.hero-art{background:radial-gradient(circle at 50% 45%,#e1d4e7,transparent 52%),linear-gradient(135deg,#eee3e9,#dddce4);border-color:#d6cbd8}
+.example-list a,.video-preview{background:#eee8f1;border-color:#ddd2e4;color:#594879}
+.example-list a:hover,.video-preview:hover{background:#e4d9ea}
+@media(max-width:800px){nav{background:#f8f5f0}}
