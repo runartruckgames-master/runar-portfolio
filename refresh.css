@@ -89,3 +89,11 @@ nav{background:#f8f5f0}
 .photo-upload:has(img:not([hidden])) #profile-hint{display:none!important}
 .photo-upload #profile-hint[hidden]{display:none!important}
 .photo-upload:not(:has(img:not([hidden]))) #profile-hint{position:absolute;inset:0;display:flex;justify-content:center;align-items:center}
+
+.photo-upload{padding:0;font:inherit;color:inherit}.photo-upload img:not([hidden]){object-fit:cover}
+.photo-editor-dialog{width:min(650px,95vw);max-width:95vw;padding:22px;border:1px solid #d9cfdf;border-radius:18px;background:#f8f5f0;color:#302e35;box-shadow:0 25px 75px #28213255}
+.photo-editor-dialog::backdrop{background:#181521a8}
+.photo-editor-dialog h3{margin:0 0 6px}.photo-editor-dialog p{margin:0 0 12px;font-size:14px;color:#68636d}
+.photo-editor-dialog canvas{display:block;width:100%;height:auto;aspect-ratio:28/23;touch-action:none;cursor:grab;border:1px solid #d5c9d8;border-radius:12px}
+.photo-editor-dialog label{display:flex;gap:12px;align-items:center;margin:14px 0}.photo-editor-dialog input{flex:1;accent-color:#7864a4}
+.photo-editor-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.photo-editor-actions button{padding:10px 14px;border:1px solid #cfc3d9;border-radius:9px;background:#eee8f1;color:#493b60;cursor:pointer}.photo-editor-actions button[data-action="save"]{background:#7864a4;color:#fff}
