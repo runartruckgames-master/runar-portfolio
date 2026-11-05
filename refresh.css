@@ -109,3 +109,6 @@ nav{background:#f8f5f0}
 /* Clean portrait border: no dotted upload outline after photo selection */
 .photo-upload:has(img:not([hidden])){border:0!important;border-radius:20px;box-shadow:0 10px 30px #45334b20;background:transparent}
 .photo-upload:has(img:not([hidden])) img{border-radius:20px}
+
+button.photo-upload.photo-loaded{border:0!important;outline:0!important;box-shadow:0 12px 32px #45334b20;border-radius:20px}
+button.photo-upload.photo-loaded:focus-visible{outline:2px solid #7864a4!important;outline-offset:4px!important}
