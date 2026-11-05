@@ -57,3 +57,9 @@ nav{background:#f8f5f0}
 .example-list a,.video-preview{background:#eee8f1;border-color:#ddd2e4;color:#594879}
 .example-list a:hover,.video-preview:hover{background:#e4d9ea}
 @media(max-width:800px){nav{background:#f8f5f0}}
+
+/* Compact portrait area */
+.hero-portrait{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:245px}
+.avatar-placeholder{width:clamp(160px,18vw,224px);height:clamp(160px,18vw,224px);border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#e9dce9,#d8d2e5);border:5px solid #f8f5f0;box-shadow:0 12px 36px #5c49632c;color:#7864a4;font-size:88px;font-weight:750}
+.avatar-caption{font-size:13px;color:#817987}
+@media(max-width:800px){.hero-portrait{min-height:185px}.avatar-placeholder{width:160px;height:160px;font-size:64px}}
