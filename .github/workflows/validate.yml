@@ -52,7 +52,10 @@ jobs:
           if(site.version!==1||video.version!==1)throw Error('Unsupported configuration version');
           for(const field of ['lead','about','contact'])if(typeof site[field]!=='string')throw Error('Invalid '+field);
           if(!site.projects||typeof site.projects!=='object'||Array.isArray(site.projects))throw Error('Invalid projects');
+          for(const [field,max] of [['lead',600],['about',1500],['contact',350]]){if(!site[field].trim()||site[field].length>max)throw Error('Published '+field+' exceeds editor constraints')}
+          for(const [name,description] of Object.entries(site.projects)){if(typeof description!=='string'||description.length>350)throw Error('Invalid project description: '+name)}
           if(typeof site.profilePhoto!=='string'||(site.profilePhoto&&!/^assets\/[a-zA-Z0-9_.-]+\.(jpg|jpeg|png|webp)$/.test(site.profilePhoto)))throw Error('Invalid profile photo path');
+          if(site.profilePhoto&&!fs.existsSync(site.profilePhoto))throw Error('Published profile photo missing: '+site.profilePhoto);
           if(!video.sources||typeof video.sources!=='object'||Array.isArray(video.sources))throw Error('Invalid video sources');
           for(const [key,path] of Object.entries(video.sources)){
             if(!['tiny-workers','birthday','magic-world'].includes(key)||typeof path!=='string'||!/^assets\/videos\/[a-z0-9_-]+\.(mp4|webm)$/.test(path))throw Error('Invalid video source: '+key);
