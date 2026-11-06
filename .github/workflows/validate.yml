@@ -43,6 +43,21 @@ jobs:
           }
           if(!site.includes('id="profile-preview"'))throw Error('Missing portrait target');
           NODE
+      - name: Security boundaries and secret exposure checks
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const publicFiles=['index.html','examples.js','refresh.css','portrait-display.js','published-content.js','preview.html'];
+          for(const file of publicFiles){
+            const source=fs.readFileSync(file,'utf8');
+            if(/(?:github_pat_[A-Za-z0-9_]{20,}|ghp_[A-Za-z0-9]{20,}|gho_[A-Za-z0-9]{20,}|ghu_[A-Za-z0-9]{20,}|ghs_[A-Za-z0-9]{20,})/.test(source))throw Error('Potential GitHub credential in '+file);
+          }
+          const homepage=fs.readFileSync('index.html','utf8');
+          if(/href=["'][^"']*(?:studio\\.html|preview\\.html)/i.test(homepage))throw Error('Public homepage links to editor');
+          const editor=fs.readFileSync('studio.html','utf8');
+          if(!/noindex,nofollow/.test(editor))throw Error('Editor must not be indexed');
+          if(/localStorage\\.setItem\\([^)]*(?:token|password|secret)/i.test(editor))throw Error('Do not store credentials in browser storage');
+          NODE
       - name: Validate published content
         run: |
           node - <<'NODE'
