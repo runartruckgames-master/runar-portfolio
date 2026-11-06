@@ -27,6 +27,7 @@ function renderPortfolioVideos(sources={}){
  player.addEventListener("error",()=>{player.hidden=true;note.textContent="Некоторые видео не удалось воспроизвести. Используйте ссылки на оригиналы."});
  row.append(player);
  }
+ if(!(typeof src==="string"&&/^assets\\/videos\\/[a-z0-9_-]+\\.(mp4|webm)$/.test(src))){const preview=document.createElement("iframe");preview.src="https://drive.google.com/file/d/"+encodeURIComponent(item.id)+"/preview";preview.title="Видео: "+item.name;preview.loading="lazy";preview.allow="autoplay; fullscreen";preview.allowFullscreen=true;preview.referrerPolicy="strict-origin-when-cross-origin";preview.style.cssText="display:block;width:100%;aspect-ratio:16/9;max-height:340px;border:0;border-radius:10px;background:#15121b;margin:10px 0";row.append(preview)}
  const links=document.createElement("div");links.className="video-source-links";
  const view=document.createElement("a");view.className="video-preview";view.href="https://drive.google.com/file/d/"+item.id+"/view";view.target="_blank";view.rel="noopener noreferrer";view.textContent="Открыть на Drive";
  const download=document.createElement("a");download.className="video-preview";download.href="https://drive.google.com/uc?export=download&id="+encodeURIComponent(item.id);download.target="_blank";download.rel="noopener noreferrer";download.textContent="Скачать оригинал";
