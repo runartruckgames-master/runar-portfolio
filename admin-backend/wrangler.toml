@@ -1,0 +1,14 @@
+name = "runar-portfolio-admin"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+workers_dev = false
+
+[vars]
+GITHUB_OWNER = "runartruckgames-master"
+GITHUB_REPO = "runar-portfolio"
+GITHUB_BRANCH = "main"
+
+# Configure a Cloudflare Access application protecting /api/* on your custom domain.
+# Set ACCESS_TEAM_DOMAIN, ACCESS_AUD, and OWNER_EMAIL in dashboard variables.
+# Store GITHUB_TOKEN as an encrypted Worker secret (never in this repository).
+# Do not deploy until all configuration and Access policies are in place.
